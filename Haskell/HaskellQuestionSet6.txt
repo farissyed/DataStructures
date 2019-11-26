@@ -1,0 +1,118 @@
+--Set 6
+
+main = do
+  putStrLn("Compiled")
+
+fstTriple (x,_,_) = x
+sndTriple (_,x,_) = x
+thrdTriple (_,_,x) = x
+
+--1
+
+name :: String -> String
+name x
+  | x == "Faris" = "First Name"
+  | x == "Ahmed" = "Middle Name"
+  | x == "Syed" = "Last Name"
+
+--2
+
+colorName :: (Int, Int, Int) -> String
+colorName (255,255,255) = "white"
+colorName (0,0,0) = "black"
+colorName (255,0,0) = "red"
+colorName (0,255,0) = "green"
+colorName (0,0,255) = "blue"
+colorName (r,g,b)
+  | r == g && g == b = "a shade of gray"
+  | notClr r || notClr g || notClr b = "not a color"
+  | otherwise = show (r,g,b)
+  where notClr x = x < 0 || x > 255
+
+--3
+
+ques3 :: Int -> String
+ques3 1 = "decidedly so"
+ques3 2 = "my sources say no"
+ques3 3 = "Ask again later"
+
+{-
+	If a number other than 1, 2, or 3 were to come in, the compiler would return: 
+		Non-exhaustive patterns in function ques3
+	This means that cases other than 1, 2, or 3 do not have an answer
+-}
+
+--4
+
+menu 1 = "Deposit"
+menu 2 = "Withdraw"
+menu 3 = "Log out"
+menu x = menu x
+
+{-
+	If a number x that is not 1, 2, or 3 is passed into the function, the method 
+	will infinitely pass x into the method and you no result will be produced in 
+	the end.
+-}
+
+--5
+
+avg :: Real a => [a] -> Float
+avg [] = error "empty list, try again" 
+avg xs = (realToFrac (sum xs)) / (realToFrac (length xs))
+
+--6
+
+threeElem [] = error "empty list, try again"
+threeElem xs = take 3 xs
+
+--7
+
+newTail :: [a] -> [a]
+newTail [] = error "empty list, try again"
+newTail xs = drop 1 xs
+
+--8
+
+power :: Integral a => a -> a -> a
+power x 1 = x
+power x y = x * ( power x (y-1) )
+
+--9
+
+grade :: Int -> String
+grade x 
+  | x >= 90 && x <= 100 = "A"
+  | x >= 80 && x < 90 = "B"
+  | x >= 70 && x < 80 = "C"
+  | x >= 60 && x < 70 = "D"
+  | x >= 0 && x < 60 = "F"
+  | otherwise = "Liar"
+
+--10
+
+fun :: String -> String -> String
+fun [] _ = ""
+fun _ [] = ""
+fun x y = ( last x ) : ( last y ) : ( fun (init x) (init y) )
+
+--11
+
+howFar :: (Float,Float) -> (Float, Float) -> String
+howFar (a,b) (c,d) 
+  | distance (a,b) (c,d) < 1 = "Very Close"
+  | distance (a,b) (c,d) < 5 = "Close"
+  | distance (a,b) (c,d) < 100 = "Somewhat Near"
+  | otherwise = "Far Away"
+  where distance (a,b) (c,d) = sqrt ( (a-c)^2 + (b-d)^2 )
+
+--12
+
+initials :: String -> String -> String
+initials x y = head x : '.' : head y : "."
+
+--13
+
+triangle
+triangle x y = [ (a,b,c) | a <- [x..y], b <- [x..y], c <- [x..y], isTriangle a b c ]
+  where isTriangle a b c = a + b > c || a + c > b || b + c > a

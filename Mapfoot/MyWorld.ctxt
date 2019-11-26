@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=MyWorld
+comment0.text=\n\ Write\ a\ description\ of\ class\ MyWorld\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=MyWorld()
+comment2.params=num
+comment2.target=void\ fillLocations(int)
+comment3.params=edges
+comment3.target=void\ drawEdges(java.util.List)
+comment4.params=
+comment4.target=java.util.List\ completeGraph()
+comment5.params=
+comment5.target=void\ drawComplete()
+comment6.params=n
+comment6.target=java.util.List\ buildRandomConnections(int)
+comment7.params=edges\ e
+comment7.target=boolean\ formsCycle(java.util.Collection,\ Edge)
+comment8.params=
+comment8.target=java.util.List\ prim()
+numComments=9

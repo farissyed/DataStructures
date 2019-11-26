@@ -1,0 +1,150 @@
+1) Give an example where div and quot return different answers. Which is equivalent to Java's integer
+division?
+
+    (-10) `div` 3
+    -4
+    (-10) `quot` 3
+    -3
+
+2) Give an example where rem and mod return different answers. Which is equivalent to Java's
+modulus?
+
+    (-10) `rem` 3
+    -1
+    (-10) `mod` 3
+    2
+
+
+3) Explain divMod and quotRem and give example calculations.
+
+    divMod rounds towards negative infinity whereas quotRem rounds towards 0
+ 	
+    (-10) `divMod` 3
+    (-4,2)
+    (-10) `quotRem` 3
+    (-3,-1)
+
+4) What does the ^ do when repeated?
+ Try: 3^2
+ 3^2^1
+ 3^2^2
+ 3^2^3
+ 3^2^4
+ 3^2^5
+
+	3^2
+	9
+	3^2^1
+	9
+     	3^2^2
+	81
+	3^2^3
+	6561
+	3^2^4
+	43046721
+	3^2^5
+	1853020188851841
+
+The answer is generated using the last two numbers in the carrot and is recursively done until there is one final number.
+a^b^c^d is calculated as a^b^(c^d), a^(b^(c^d)).
+   
+
+5) Research time:
+ What main class type can use max and min? 
+	ord
+ What other methods are available for this data type?
+	>, <, >=, <=
+ What main class type can use ==? 
+	Eq
+ What is the opposite of ==? 
+	/=
+ Give an example of using subtract, even, odd, gcd, lcm, ^, ^^.
+Prelude> subtract 10 2
+-8
+Prelude> even 10
+True
+Prelude> odd 10
+False
+Prelude> gcd 10 2
+2
+Prelude> lcm 2 15
+30
+Prelude> 2^2
+4
+Prelude> 2^2^2
+16
+	
+
+6) Generate the first 20 results of the algebraic results for x^3 - 3x^2 + 3
+
+	[x^3 - 3*x^2 + 3 | x <- [1..20]]
+	=> [1,-1,3,19,53,111,199,323,489,703,971,1299,1693,2159,2703,3331,4049,4863,5779,6803]
+
+7) Grab the first 10 numbers beyond 500 which are perfectly divisible by 42.
+
+	take 10 [ x | x <- [500..], x `mod` 42 == 0 ]
+	=> [504,546,588,630,672,714,756,798,840,882]
+
+8) Write a function which given three numbers, a, b, and c, calculates all numbers from a to b which are
+multiples of c. However, if b is less than a, do the same thing but calculate all numbers from b to a
+which are multiples of c.
+
+	func a b c = filter(\x -> x `mod` c == 0) $ if a < b then [a..b] else [b..a]
+
+9) Write a function which accepts a list, x and a number, x, and returns a list of values in x which have no common divisors with x aside from the number 1.
+
+	ques9 xs x = [a | a <- xs, gcd a x == 1]	
+
+10) Write a function to be used at a high rise hotel, where the owner wants all floor numbers from 0 to
+whatever they decide as the top most floor, except they do not want floor 13 to exist (unlucky).
+
+	hotel x = filter (/= 13) [0..x]
+
+11) Calculate the sum of all results from the expression 27x^2 - 12x - 20 starting at x = 0 and ending at x = 1000.
+
+	sum $ map (\x -> 27*x^2 - 12*x - 20) [1..1000]
+	9007478500
+
+12) Write a function which calculates the number of divisors any given value has. For instance, the
+number of divisors in 12 = 1,2,3,4,6,12 = 6 total numbers. The number of divisors in 3 = 1,3 = 2 total
+numbers.
+
+	ques12 x = length [y | y <- [1..x], mod x y == 0]
+
+13) Write a function that given a sentence, replaces all spaces ' ' with underscores '_'.
+
+	ques13 x = tail $ concat $ ['_':z | z <- words x]
+
+14) Write a function which, given a sentence and a phrase, inserts the phrase after each character in the
+sentence. For instance: "That hurt" and "Ouch!" -> "TOuch!hOuch!aOuch!tOuch!
+Ouch!hOuch!uOuch!rOuch!tOuch!"
+
+	ques14 x y = concat [z:y | z <- x]
+
+15) Write a function which generates every matrix combination in a 9x9 matrix. -> "(0,0)", "(0,1)",
+"(0,2)", ... "(1,0)", "(1,1)"... "(9,9)". Hint: show will convert an int to a String, so show 5 -> "5"
+
+	matrix x y = ["("++(show a)++","++(show b)++")" | a <- [0..x], b <- [0..y]]
+
+	matrix 9 9
+
+["(0,0)","(0,1)","(0,2)","(0,3)","(0,4)","(0,5)","(0,6)","(0,7)","(0,8)","(0,9)","(1,0)","(1,1)","(1,2)","(1,3)","(1,4)","(1,5)","(1,6)","(1,7)","(1,8)","(1,9)","(2,0)","(2,1)","(2,2)","(2,3)","(2,4)","(2,5)","(2,6)","(2,7)","(2,8)","(2,9)","(3,0)","(3,1)","(3,2)","(3,3)","(3,4)","(3,5)","(3,6)","(3,7)","(3,8)","(3,9)","(4,0)","(4,1)","(4,2)","(4,3)","(4,4)","(4,5)","(4,6)","(4,7)","(4,8)","(4,9)","(5,0)","(5,1)","(5,2)","(5,3)","(5,4)","(5,5)","(5,6)","(5,7)","(5,8)","(5,9)","(6,0)","(6,1)","(6,2)","(6,3)","(6,4)","(6,5)","(6,6)","(6,7)","(6,8)","(6,9)","(7,0)","(7,1)","(7,2)","(7,3)","(7,4)","(7,5)","(7,6)","(7,7)","(7,8)","(7,9)","(8,0)","(8,1)","(8,2)","(8,3)","(8,4)","(8,5)","(8,6)","(8,7)","(8,8)","(8,9)","(9,0)","(9,1)","(9,2)","(9,3)","(9,4)","(9,5)","(9,6)","(9,7)","(9,8)","(9,9)"]
+
+
+16) Modify the adjective/noun example to accept a list of adjectives, nouns, and build a list with every
+combination of adjective->noun you can but only include ones where the adjective and noun begin with
+the same letter. "lazy frog" would not be included, but "lazy llama" or "cool cat" or "dirty dog" would
+be.
+
+	ques16 n a = [adj ++ " " ++ noun | adj <- a, noun <- n, head noun == head adj]
+
+
+17) Write a function which given a start year and an end year generates every leap year between the
+two. Leap years are all multiples of 400 or are all multiples of 4 which are not multiples of 100.
+
+	leapyear x y = [z | z <- [x..y], mod z 400 == 0 || (mod z 4 == 0 && mod z 100 /= 0)]
+
+
+
+
+

@@ -1,0 +1,82 @@
+1) Calculate the maximum value out of any 5 numbers.
+
+    xs = [2,1,4,6,3]
+    maximum xs
+    6
+
+2) Calculate the maximum value between any 2 numbers two different ways (intending
+you to use infix notation).
+
+    max 2 8
+    8
+    2 `max` 8
+    8
+
+3) Calculate the next higher number than any negative number (for instance, -5 -> -4)
+
+    succ (-5)
+    -4
+
+4) Write a function which will return the squared value of any number.
+
+    square x = x^2
+
+5) Write a function which will return the sum of any two numbers.
+
+    sum' x y = x + y
+
+6) Write a function which will find the sum of any four numbers, but use #5's function
+to do it.
+
+    sum4 a b c d = sum (sum a b) (sum c d)
+
+7) Write a function which will calculate your letter grade in a class given a particular
+grade% as a parameter: >=90 A, >= 80 B, >= 70 C, >= 60 D, others F
+
+    grade x = if x>=90 then "A" else if x>=80 then "B" else if x>=70 then "C" else if x>=60 then "D" else "F"
+
+8) Calculate a list that contains 3, 1, 4, 1, 5, 9
+
+    pi = [3,1,4,1,5,9]
+    pi
+    [3,1,4,1,5,9]
+
+9) Calculate the first letter in any string
+
+    head "Hello"
+    'H'
+
+10) Calculate a list that can store this matrix:
+	3 1 4 1 5
+	9 2 6 5 3
+	5 8 9 7 9
+
+    xs = [[3,1,4,1,5],[9,2,6,5,3],[5,8,9,7,9]]
+
+11) Write a function which adds a given parameter to the end of a given list.
+
+    appendEnd xs y = xs ++ [y]
+
+12) Write a function which adds a given parameter to the beginning of a given list.
+
+    appendBeg xs y = [y] ++ xs
+
+13) What is the tail of "bubba"?
+
+   tail "bubba"
+   "ubba"
+
+14) What is the init of "bubba"?
+
+   init "bubba"
+   "bubb"
+
+15) What is the head of "bubba"?
+
+   head "bubba"
+   'b'
+
+16) What is the last of "bubba"?
+
+   last "bubba"
+   'a'

@@ -1,0 +1,105 @@
+1) Write a function which given a list will return a new list of tuples, with the original values now matched with their
+equivalent slot number.
+ie: [a, b, c, d] -> [ (0,a), (1,b), (2,c), (3,d) ]
+
+	ques1 xs = zip [0..] xs
+
+2) Write a function which given a list will return a new list of tuples, with the original values now matched with their
+reversed slot location (n-slot#, where n is the length of the slot).
+ie: [a, b, c, d] -> [ (4,a), (3,b), (2,c), (1,d) ]
+
+
+	ques2 xs = zip [(length xs),(length xs - 1)..] xs
+
+
+3) Write a function which accepts one list of team names and generates every possible matchup of teams, including both
+home and away games.
+ie: [a, b, c] -> [ (a,b), (a,c), (b,a), (b,c), (c,a), (c,b) ]
+
+
+	ques3 xs = [ (x,y) | x <- xs, y <- (reverse xs), x /= y ]
+
+
+
+4) Write a function that given two arrays pairs the arrays values with the second list backwards.
+ie: [a, b, c] & [e, f, g] -> [ (a,g), (b,f), (c,e) ]
+
+	
+	ques4 xs ys = zip xs $ reverse ys
+
+
+5) Given a list of tuples which contain coordinates, return only the tuples which coordinates are within a distance of 5
+from the origin (the distance formula on them and (0,0) is less than 5).
+
+
+	ques5 xs = [(x,y) | (x,y) <- xs, sqrt (x^2 + y^2) < 5 ]
+
+
+
+6) Generate a list of tuples which contains the letters A-Z in the first part of the pair and their ascii values as the second
+part of the pair. The ascii value of a pairing can only be found if you import Data.Char (ord) then use the ord command
+on a letter. So, ord 'A' = 65.
+
+	zip ['A'..'Z'] [(ord 'A')..]
+
+[('A',65),('B',66),('C',67),('D',68),('E',69),('F',70),('G',71),('H',72),('I',73),('J',74),('K',75),('L',76),('M',77),('N',78),('O',79),('P',80),('Q',81),('R',82),('S',83),('T',84),('U',85),('V',86),('W',87),('X',88),('Y',89),('Z',90)]
+
+
+
+7) Given a list of potential colors (triples), return back a list of only real colors. Colors have all three values in the range
+[0,255].
+
+
+	ques7 xs = [(r,g,b) | (r,g,b) <- xs, r <= 255, g <= 255, b<=255, r >= 0, g >= 0, b >= 0]
+
+
+
+8) Generate a list of all potential chess locations [(a,1), (a,2), (a,3), ...] Chess columns are labeled a-h and chess rows are
+labeled 1-8.
+
+	[ (x,y) | x <- ['a'..'h'], y <- [1..8]]
+
+[('a',1),('a',2),('a',3),('a',4),('a',5),('a',6),('a',7),('a',8),('b',1),('b',2),('b',3),('b',4),('b',5),('b',6),('b',7),('b',8),('c',1),('c',2),('c',3),('c',4),('c',5),('c',6),('c',7),('c',8),('d',1),('d',2),('d',3),('d',4),('d',5),('d',6),('d',7),('d',8),('e',1),('e',2),('e',3),('e',4),('e',5),('e',6),('e',7),('e',8),('f',1),('f',2),('f',3),('f',4),('f',5),('f',6),('f',7),('f',8),('g',1),('g',2),('g',3),('g',4),('g',5),('g',6),('g',7),('g',8),('h',1),('h',2),('h',3),('h',4),('h',5),('h',6),('h',7),('h',8)]
+
+
+
+9) Write a function that generates a list of all possible triangles in a given range x, y. Three side lengths can form a
+triangle only if the sum of each pair of side lengths is greater than the third side.
+
+
+	triangle x y = [ (a,b,c) | a <- [x..y], b <- [x..y], c <- [x..y], a + b > c && a + c > b && b + c > a ]
+
+
+10) Write a function that strips a list of tuples down only to its second values. ie: [(a,b), (b,c), (e,f), (a,a)] -> [b, c, f, a]
+
+
+	secondval xs = [ snd x | x <- xs ]
+
+
+
+11) Write a function which accepts a list and returns back a mapping of the list's unique values to the number of items
+that were in the list.
+ie: [3, 3, 1, 4, 3, 5, 5, 2, 1] -> [(3,3), (1,2), (4, 1), (5,2)]
+
+
+	ques11 xs = [ (x,(length $ filter (==x) xs )) | x <- nub xs]
+
+
+
+12) Write a function which given a string will return a hashcode of that string computed by summing each ascii value in
+the string multiplied by 31^(n-i+1) value, where n is the length of the string and i is the slot number. For instance: "dog"
+-> 'd' * 31^2 + 'o' * 31^1 + 'g' * 31 ^ 0. To get the ascii value of any char, you will need to add: import Data.Char (ord) to
+the top of your file, then the function ord x will calculate the ascii value of any char. ord 'A' = 65 for instance. I
+recommend you split this into separate functions.
+
+
+	hashcode xs = [(ord (fst x)) * (31^(snd x)) | x <- slots] where slots = zip xs [(length xs - 1), (length xs - 2)..0]
+
+
+
+13) Write a function which given a list of strings will return a new list of tuples, mapping the hashcode of the string to its
+actual value.
+
+	hashToString xs = zip xs (hashcode xs)
+
+

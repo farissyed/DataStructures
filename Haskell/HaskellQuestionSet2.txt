@@ -1,0 +1,91 @@
+1) Find the length of your name.
+
+    length "Faris"
+    5
+
+2) Check if a word is a palindrome with minimum effort (basically zero
+effort).
+
+    palindrome x = x == reverse x
+
+3) Write a function which given any word will calculate the second half of
+the word. ie: computer -> uter. This is tricky, because / returns decimals
+now. Use the `quot` function to do integer division.
+
+    secondhalf x = drop ((length x) `quot` 2) x 
+
+4) Write a function which given any word will calculate the first half of the
+word. ie: computer -> comp.
+
+    firsthalf x = take ((length x) `quot` 2) x 
+
+5) Write a function which given two separate lists returns the largest value
+of the two lists.
+
+    minLists x y = min (minimum x) (minimum y) 
+
+
+6) Write a function which takes a list and two parameters and returns true if
+both of those parameters are in the given list.
+
+    bothInLists xs x y = (elem x xs) && (elem y xs)
+
+7) Calculate how many symbols are from 'A' (uppercase A)to lowercase 'z'
+(more than 52).
+
+    length ['A'..'z']
+
+
+8) Calculate all the numbers from 100 to 0 by -1s.
+
+    [100,99..0]
+
+
+9) Calculate all the letters from 'A' to 'Z' but skip every other letter.
+
+    ['A','C'..'Z']
+
+
+10) Without using any numeric calculations (division or multiplication),
+calculate the number of nickels it would take until you had one million
+dollars.
+
+    length [0.05,0.1..1000000]
+
+
+11) Grab the first 100 even numbers starting from 0
+
+    take 100 [0,2..]
+
+
+12) Write a function that given a starting value and a number x returns the
+first x even numbers starting from the starting value. ie: firstXEven 52 4 -
+> [52, 54, 56, 58].
+
+    firstXEven x y = take y [x,x+2..]
+
+
+13) Write a function that given a String as a cryptography key and a number
+for the number, x, of items you want from the key will return the first x
+items in the repeated key. ie: cryptKey "abc" 8 -> "abcabcab"
+
+    cryptKey x y = take y (cycle x)
+
+
+14) Write a function that given a String and a number will return that many
+copies of the String. ie: copyString "meow" 5 -> "meowmeowmeowmeowmeow"
+
+    copyString x y = take (length x * y) (cycle x)
+
+15) Write a function that given a String and a number will return that many
+copies of the String but separated by a space. ie: copyString "meow" 5 ->
+"meow meow meow meow meow"
+
+    copyString x y = x ++ take ( (length x) * (y-1) + y - 1 ) (cycle (" " ++ x))
+
+16) Why does every if need an else?
+
+    Haskell is lazy and strict and there always has to be an answer to the question being asked in the function.
+
+
+

@@ -1,0 +1,100 @@
+1. What is the type of the expression 1+1? Explain this as if you are trying to
+explain it to an AP student.
+
+	The type of the expression will be Num which serves as an "interface" to any type of number type such as Int, Integer, Float, or Double.
+
+
+2. What is the type of max? Explain each part of it as if you are trying to explain
+it to an AP student.
+
+
+	Ord, this is the "interface" such as Comparable in java allowing for the objects to be compared and determined as greater than the other.
+
+
+3. If you were to write a function to calculate the average of two integers, how would
+you define the type of the function?
+
+	Num a => a -> a -> a
+
+
+4. If you were to write a function to find the mode of a list of anything that uses
+the = sign, how would you define the type of the function?
+
+
+	Eq a => a -> a -> a
+
+
+5. Explain the difference between Int, Integer, Integral in words that an AP student
+could understand.
+
+	Integral serves as an "interface" to the classes Int and Integer. Integral only includes whole numbers. An Int is bounded by a range from [-2147483648,2147483647] on 32 bit machines. Integer is the same as an Int, however it is unbounded whereas Int is bounded. 
+
+
+6. You want to write a function that finds the second largest piece of information in
+a list - but you don't know how to write the Type of the function. Explain how you
+could figure out the Type of the function by using other things.
+
+	Follow the structure that is given from the :t command in Haskell. You can use a function such as `max` to see what type of parameters you may need for your function.
+
+
+7. Write a function that calculates the area of a trapezoid. Allow very precise
+decimals to be sent in.
+
+	trapezoid :: Double -> Double -> Double -> Double
+	trapezoid b1 b2 h = h * ( (b1 + b2) / 2 ) 
+
+
+8. Write your own version of the tail function on a list, make sure to define the
+type.
+
+
+	tail :: [a] -> [a]
+	tail xs = drop 1 xs
+
+
+9. Write a pythagorean theorem function which returns true if a^2 + b^2 equals c^2.
+Limit a, b, and c to integers.
+
+	pythagorean :: Integer -> Integer -> Integer -> Bool
+	pythagorean a b c = c^2 == $ a^2 + b^2 
+
+
+
+10. Write an inAscendingOrder function which will work on any list as long as the list
+items themselves are comparable with the > or < sign, and returns true if they are
+in ascending order.
+
+	inAscendingOrder :: Ord a => [a] -> Bool
+	inAscendingOrder [] = True
+	inAscendingOrder [a] = True
+	inAscendingOrder (x:xs) = if x < head xs then inAscendingOrder xs else False
+
+
+11. Write a function that takes in two numbers that are currently stored in strings,
+then returns the values subtracted. Ex: subt "342" "330" -> 12
+
+	subt :: String => String -> String -> Bool
+	subt a b = (read a :: Integer) - (read b :: Integer)
+
+
+12. Write a function that finds the average (as a decimal), with minimal precision, of
+a list of numbers.
+
+
+	avg :: Real a => [a] -> Float
+	avg xs = (realToFrac (sum xs)) / (realToFrac (length xs))
+
+
+13. Write a function that given a list of Strings, where each String is really a number like "3.2" or "5", converts them to a list of numbers.
+
+	stringToNums :: [String] -> [Double]
+	stringToNums xs = map (\x -> read x :: Double) xs
+
+
+
+14. Explain how an AP student is like a toddler.
+
+	An AP student is like a toddler because they do not know much about what they are going into. Toddlers go into the world not understanding life while AP students walk into classes not knowing any of the material that they will be learning in the following year. They also tend to cry about many things. Toddlers may cry about losing their toys while AP students may cry about losing their grades.
+
+
+
